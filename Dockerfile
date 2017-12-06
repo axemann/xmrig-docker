@@ -16,6 +16,7 @@ RUN   apk --no-cache upgrade && \
         build-base \
         cmake \
         git
+ADD   /start.sh /start.sh
 RUN   chmod +x /start.sh
 WORKDIR    /xmrig
 CMD   ["./start.sh"]
