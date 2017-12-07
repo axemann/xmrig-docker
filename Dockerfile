@@ -1,4 +1,4 @@
-FROM  alpine:latest
+FROM    alpine:latest
 RUN   apk --no-cache upgrade && \
       apk --no-cache add \
         git \
@@ -16,7 +16,13 @@ RUN   apk --no-cache upgrade && \
         build-base \
         cmake \
         git
-ADD   /start.sh /start.sh
-RUN   chmod +x /start.sh
+ADD   start.sh /start.sh
+RUN   chmod 755 /start.sh
+ENV POOL=xmr-us-east1.nanopool.org:14444 \
+    WALLET=463tWEBn5XZJSxLU6uLQnQ2iY9xuNcDbjLSjkn3XAXHCbLrTTErJrBWYgHJQyrCwkNgYvyV3z8zctJLPCZy24jvb3NiTcTJ.32be0b81c68b425582a35086c2f943d824e520e739034ea780119b80e9216681 \
+    NANOUSER=axemann@gmail.com \
+    PASSWORD=x \
+    MAXCPU=75 \
+    DONATE=0
 WORKDIR    /xmrig
-CMD   ["./start.sh"]
+ENTRYPOINT ["/start.sh"]
